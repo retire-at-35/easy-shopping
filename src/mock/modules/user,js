@@ -1,0 +1,19 @@
+import { Random } from "mockjs"; // 导出随机函数
+import { useUserStore } from '@/stores/userStore'
+const userStore = useUserStore()
+export const  login=()=> {
+  const userJson = localStorage.getItem('userInfo')
+  if (userJson != null) {
+    userInfo.value = JSON.parse(userJson)
+  } else {
+    userInfo.value = {}
+  }
+  return {
+    code: 200,
+    data: {
+      username: Random.cname(),
+      token: Random.guid(),
+      message: "Login successfully."
+    }
+  };
+}
